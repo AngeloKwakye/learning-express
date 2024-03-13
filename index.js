@@ -1,27 +1,22 @@
 import express from 'express';
+import todosRoutes from './routes/todos.routes.js'
+import bodyParser from 'body-parser';
+import cors from 'cors'
 
 // create express app
 const app = express();
 
-//Define routes
-app.get('/',(req,res) =>{
-    console.log(req.query, req.headers)
-    res.send('Success!!!')
-})
+//apply middlewares
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(cors())
 
-////another route
-app.get('/ping', (req, res)=>{
-    res.send('Ping Pong');
-});
+// use routes
+app.use(todosRoutes);
 
 
-// getting the current wprking directory
-app.get('/file', (req, res) =>{
-    console.log(process.cwd());
-    res.sendFile(process.cwd() +'/index.html');
-});
 
-//listen for incoming request
+// listen for incoming request
 app.listen(4000, () =>{
-    console.log('express app is running!!')
+    console.log('express app is running!!');
 });

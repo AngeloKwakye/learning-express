@@ -1,0 +1,14 @@
+notes
+
+
+**the app in index.js can only be defined once
+
+
+**database thinks about 4 things
+1. read
+2. create
+3. edit
+4. delete
+
+
+
